@@ -24,17 +24,28 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 
-model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=0.2),
-              loss='binary_crossentropy')
+model.compile(
+    optimizer=tf.keras.optimizers.SGD(learning_rate=0.2),
+    loss='binary_crossentropy'
+    )
+
 early_stopping = EarlyStopping(
-  monitor='loss',
-  min_delta=0.001,
-  patience=5,
-  restore_best_weights=True)
-model.fit(x_train, y_train, epochs=5000, verbose=2, callbacks=[early_stopping])
+    monitor='loss',
+    min_delta=0.001,
+    patience=5,
+    restore_best_weights=True
+    )
+
+model.fit(
+    x_train,
+    y_train,
+    epochs=5000,
+    verbose=2,
+    callbacks=[early_stopping]
+    )
 
 
 for x_input in [[0, 0], [0, 1], [1, 0], [1, 1]]:
-  prediction = model.predict(np.array([x_input]))
-  binary_output = 1 if prediction > 0.5 else 0
-  print(f"Input: {x_input}, Predicted Output: {binary_output}")
+    prediction = model.predict(np.array([x_input]))
+    OUTPUT = 1 if prediction > 0.5 else 0
+    print(f"Input: {x_input}, Predicted Output: {OUTPUT}")
