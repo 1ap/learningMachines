@@ -31,4 +31,6 @@ jobs:
 
     - name: Run safety
       run: |
-        safety scan --key=${{secrets.SAFETY_API_KEY}}
+        safety scan
+      with:
+        api-key: ${{ secrets.SAFETY_API_KEY }}
