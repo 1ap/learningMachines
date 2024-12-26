@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3.11
 # -*- coding: utf-8 -*-
 #
 # author: Pavan P P ( pavanpadmashali@gmail.com)
