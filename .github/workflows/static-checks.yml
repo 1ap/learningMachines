@@ -1,0 +1,33 @@
+name: Static Checks
+
+on: [push, pull_request]
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint bandit safety
+
+    - name: Run pylint
+      run: |
+        pylint /home/pavan/workspace/learningMachines/src/classification_binary.py
+
+    - name: Run bandit
+      run: |
+        bandit -r /home/pavan/workspace/learningMachines/src
+
+    - name: Run safety
+      run: |
+        safety check
