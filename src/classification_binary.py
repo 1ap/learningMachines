@@ -11,6 +11,7 @@ test system is an exclusive OR gate.
 
 import tensorflow as tf
 import numpy as np
+from tensorflow.keras.callbacks import EarlyStopping
 
 HIDDEN_NODES = 10   # Number of hidden layers is one
 
@@ -25,8 +26,12 @@ model = tf.keras.Sequential([
 
 model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=0.2),
               loss='binary_crossentropy')
-
-model.fit(x_train, y_train, epochs=50, verbose=2)
+early_stopping = EarlyStopping(
+  monitor='loss',
+  min_delta=0.001,
+  patience=5,
+  restore_best_weights=True)
+model.fit(x_train, y_train, epochs=5000, verbose=2, callbacks=[early_stopping])
 
 
 for x_input in [[0, 0], [0, 1], [1, 0], [1, 1]]:
