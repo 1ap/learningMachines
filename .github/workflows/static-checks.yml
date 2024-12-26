@@ -31,4 +31,4 @@ jobs:
 
     - name: Run safety
       run: |
-        safety scan
+        safety scan --key=SAFETY_API_KEY
