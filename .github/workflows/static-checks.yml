@@ -22,7 +22,7 @@ jobs:
 
     - name: Run pylint
       run: |
-        pylint /home/pavan/workspace/learningMachines/src/classification_binary.py
+        pylint src/classification_binary.py
 
     - name: Run bandit
       run: |
