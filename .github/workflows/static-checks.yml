@@ -30,7 +30,8 @@ jobs:
         bandit -r src
 
     - name: Run safety
-      run: |
-        safety scan
+      uses: safety/safety-action@v2
       with:
         api-key: ${{ secrets.SAFETY_API_KEY }}
+
+      
