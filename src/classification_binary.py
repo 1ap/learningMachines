@@ -5,7 +5,7 @@
 """
 Provide a classifier that can classify binary inputs to binary outputs.
 Input dimension : 2
-Output dimension : 2
+Output dimension : 1
 test system is an exclusive OR gate.
 """
 
