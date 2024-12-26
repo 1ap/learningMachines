@@ -1,6 +1,8 @@
 name: Static Checks
 
-on: [push, pull_request]
+on: 
+  push:
+  pull_request:
 
 jobs:
   static-checks:
@@ -8,10 +10,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.11'
 
@@ -30,8 +32,6 @@ jobs:
         bandit -r src
 
     - name: Run safety
-      uses: safety/safety@3.2.14
+      uses: safety/safety-action@v2
       with:
         api-key: ${{ secrets.SAFETY_API_KEY }}
-
-      
