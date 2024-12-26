@@ -26,7 +26,7 @@ jobs:
 
     - name: Run bandit
       run: |
-        bandit -r /home/pavan/workspace/learningMachines/src
+        bandit -r src
 
     - name: Run safety
       run: |
